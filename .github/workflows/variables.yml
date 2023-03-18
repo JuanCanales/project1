@@ -1,6 +1,6 @@
 name: Ejemplo variables
 on:
-  workflow_dispatch
+  workflow_dispatch:
   
 env:
   NAME: 'Juan L.' 
