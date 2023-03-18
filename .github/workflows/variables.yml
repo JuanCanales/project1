@@ -3,7 +3,7 @@ on:
   workflow_dispatch
   
 env:
-  NAME: 'Juan' 
+  NAME: 'Juan L.' 
   
 jobs:
   show:
