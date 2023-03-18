@@ -1,0 +1,12 @@
+name: Ejemplo variables
+on:
+  workflow_dispatch:
+env:
+  NAME: 'Juan'
+  
+jobs:
+  show:
+     runs-on: ubuntu-latest
+     steps:
+      - name: Show variables
+        run: echo 'Hola ' $NAME      
