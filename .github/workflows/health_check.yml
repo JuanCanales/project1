@@ -1,6 +1,7 @@
 on:
   schedule:
-    - cron: '5 * * * * '
+    # started each 5 min
+    - cron: '5 * * * *'
     
 jobs:
   check_schedule:
