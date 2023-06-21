@@ -1,11 +1,11 @@
 name: GitHub Actions Scheduled Workflow
-run-name: ${{ github.actor }} is testing out Scheduled workflows with cron in github 🚀
+run-name: Scheduled workflows with cron (5 min) 🚀
 
 #on: [push]
 on:
   schedule:
     # started each 5 min
-    - cron: '5 * * * *'
+    - cron: '*/5 * * * *'
     
 jobs:
   check_schedule:
