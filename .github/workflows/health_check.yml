@@ -3,9 +3,9 @@ run-name: Health check scheduled with cron (20 min) 🚀
 
 #on: [push]
 on:
-  schedule:
+  #schedule:
     # started each 5 min
-    - cron: '*/20 * * * *'
+    #- cron: '*/20 * * * *'
     
 jobs:
   check_schedule:
