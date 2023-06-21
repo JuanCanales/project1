@@ -1,11 +1,11 @@
 name: GitHub Actions Scheduled Workflow
-run-name: Scheduled workflows with cron (5 min) 🚀
+run-name: Health check scheduled with cron (20 min) 🚀
 
 #on: [push]
 on:
   schedule:
     # started each 5 min
-    - cron: '5,10,15,20,25,30,35,40,45,50,55,0 * * * *'
+    - cron: '*/20 * * * *'
     
 jobs:
   check_schedule:
