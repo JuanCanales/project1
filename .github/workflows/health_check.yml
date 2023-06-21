@@ -5,7 +5,7 @@ run-name: Scheduled workflows with cron (5 min) 🚀
 on:
   schedule:
     # started each 5 min
-    - cron: '*/5 * * * *'
+    - cron: '5,10,15,20,25,30,35,40,45,50,55,0 * * * *'
     
 jobs:
   check_schedule:
