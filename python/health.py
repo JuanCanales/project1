@@ -1,7 +1,22 @@
+# Lib utilities in python
+# checkURLs : check url in the set are responding
+# traceroute : traceroute to network
+
+# Libraries for checkURLs
 import requests
+
+# Libraries for sendMail
 import smtplib, ssl
 from email.message import EmailMessage
 from requests.exceptions import HTTPError
+
+
+# Libraries for traceroute
+import socket
+import struct
+import time
+from scapy.all import *
+import argparse
 
 def checkURLs():
     # for url in ['https://api.github.com', 'https://api.github.com/invalid', 'http://adfkjladslkdfas.com/']:
@@ -24,6 +39,41 @@ def checkURLs():
 #            sendMail(url, response.status_code)
         else:
             print('Success!')
+
+
+def traceroute(destination, max_hops=30, timeout=2):
+    destination_ip = socket.gethostbyname(destination)
+    port = 33434
+    ttl = 1
+
+    while True:
+        # Creating the IP and UDP headers
+        ip_packet = IP(dst=destination, ttl=ttl)
+        udp_packet = UDP(dport=port)
+
+        # Combining the headers
+        packet = ip_packet / udp_packet
+
+        # Sending the packet and receive a reply
+        reply = sr1(packet, timeout=timeout, verbose=0)
+
+        if reply is None:
+            # No reply, print * for timeout
+            print(f&quot;{ttl}\t*&quot;)
+        elif reply.type == 3:
+            # Destination reached, print the details
+            print(f&quot;{ttl}\t{reply.src}&quot;)
+            break
+        else:
+            # Printing the IP address of the intermediate hop
+            print(f&quot;{ttl}\t{reply.src}&quot;)
+
+        ttl += 1
+
+        if ttl &gt; max_hops:
+            break
+
+
 
 
 def sendMail(url, code):
